@@ -1,0 +1,89 @@
+
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>랜덤리스트</title>
+<!-- library css -->  
+<link rel="stylesheet" href="./lib/bootstrap.min.css">
+<link rel="stylesheet" href="./lib/bootstrap-theme.css">
+
+
+</head>
+<body>
+
+<h1 id="dice_title">A~B 까지 나열</h1>
+
+<br>
+<div class="form-inline">
+	<label> 1 ~ </label>
+	<input class="form-control"  style="width:100px" ="" maxlength="4" type="text" id="1toB_input">
+	<button class="btn btn-lg btn-primary" onclick='randomListClick(1, $("#1toB_input").val());'>결과</button>
+</div>
+<div class="form-inline">
+	<input class="form-control"  style="width:100px" ="" maxlength="4" type="text" id="AtoB_A">
+	<label> ~ </label>
+	<input class="form-control"  style="width:100px" ="" maxlength="4" type="text" id="AtoB_B">
+	<button class="btn btn-lg btn-primary" onclick='randomListClick($("#AtoB_A").val(), $("#AtoB_B").val());'>결과</button>
+</div>
+<br>
+<br>
+
+<h2 id="dice_result">이곳은 결과 창입니다~</h2>
+
+<br></br>
+<button onclick='window.location.href="http://lattetime.cafe24.com/util";'>홈으로 가기</button>
+
+ 
+
+<!-- script -->
+<!-- library -->
+<script type="text/javascript" src="./lib/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="./lib/bootstrap.min.js"></script>
+<!-- application -->
+
+ <!-- page -->
+<script type="text/javascript">
+
+function randomListClick(a, b) {
+	if (isNaN(a) || isNaN(b) ) {
+		alert('아 왜 숫자도 아닌걸 넣어요!? 다시 해요!');
+		return;
+	}
+
+    a = Number(a);
+    b = Number(b);
+	if (!(a<b)) {
+		alert('a보다 b가 커야 하거든요.');
+		return;
+	}
+	
+	var list = [];
+	for (var i = a; i <= b ; i++) {
+		list.push(i);
+	}
+	for(var i=0; i<(b-a+1) ; i++) {
+	    var nRand = parseInt(Math.random() * (b-a+1));
+        var nTemp = 0;
+        nTemp = list[i];
+        list[i] = list[nRand];
+        list[nRand] = nTemp;
+    }
+    var sResult = "결과는 : ";
+    for (var i=0,nLen=list.length; i<nLen ; i++) {
+        sResult += (list[i] + ", ");
+    }
+	var eResult = document.getElementById("dice_result");
+	eResult.innerHTML = sResult;
+	
+}
+
+</script>
+
+</body>
+
+
+
+</html>

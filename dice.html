@@ -1,0 +1,83 @@
+
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>주사위</title>
+<!-- library css -->  
+<link rel="stylesheet" href="./lib/bootstrap.min.css">
+<link rel="stylesheet" href="./lib/bootstrap-theme.css">
+
+
+</head>
+<body>
+
+<h1 id="dice_title">주사위를 굴려보아요</h1>
+
+<br>
+<table>
+<tr>
+	<td><div>1d100</div> <button class="btn btn-lg btn-primary" onclick="btn_rolldice(100); ">굴리기</button></td>
+	<td><div>1d10</div> <button class="btn btn-lg btn-primary" onclick="btn_rolldice(10); ">굴리기</button></td>
+	<td><div>1d8</div> <button  class="btn btn-lg btn-primary" onclick="btn_rolldice(8); ">굴리기</button></td>
+</tr>
+<tr>
+	<td><div>1d6</div> <button  class="btn btn-lg btn-primary" onclick="btn_rolldice(6); ">굴리기</button></td>
+	<td><div>1d4</div> <button  class="btn btn-lg btn-primary" onclick="btn_rolldice(4); ">굴리기</button></td>	
+	<td><div>1d3</div> <button  class="btn btn-lg btn-primary" onclick="btn_rolldice(3); ">굴리기</button></td>
+</tr>
+</table>
+<br>
+<br>
+
+<div>
+	<div>1d</div> 
+	<input class="form-control"  style="width:100px" ="" maxlength="4" type="text" id="dimention_text">  
+	<button  class="btn btn-lg btn-primary" onclick="btn_rolldice( document.getElementById('dimention_text').value ); ">굴리기</button>
+</div>
+
+
+<br></br>
+
+<h2 id="dice_result">이곳은 결과 창입니다~</h2>
+
+<br></br>
+
+<button onclick='window.location.href="http://lattetime.cafe24.com/util";'>홈으로 가기</button>
+
+ 
+
+<!-- script -->
+<!-- library -->
+<script type="text/javascript" src="./lib/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="./lib/bootstrap.min.js"></script>
+<!-- application -->
+
+ <!-- page -->
+<script type="text/javascript">
+
+function btn_rolldice(dimen) {
+	
+	if (isNaN(dimen)) {
+		alert('아 왜 숫자도 아닌걸 넣어요!? 다시 해요!');
+		return;
+	}
+	
+	var resultNum = Math.floor(Math.random() * dimen ) + 1;
+	var oToday = new Date();
+	var resultString = "( /" + resultNum + " / / - "  + oToday.getHours() + ":" + oToday.getMinutes() + ":"+ oToday.getSeconds() + ")";
+	
+	var eResult = document.getElementById("dice_result");
+	eResult.innerHTML = resultString;
+	
+}
+
+</script>
+
+</body>
+
+
+
+</html>
