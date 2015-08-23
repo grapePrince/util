@@ -7,14 +7,19 @@
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <title>주사위</title>
 <!-- library css -->  
-<link rel="stylesheet" href="./lib/bootstrap.min.css">
-<link rel="stylesheet" href="./lib/bootstrap-theme.css">
+<link rel="stylesheet" href="../lib/bootstrap.min.css">
+<link rel="stylesheet" href="../lib/bootstrap-theme.css">
 
 
 </head>
 <body>
 
-<h1 id="dice_title">주사위를 굴려보아요</h1>
+<div id="dice_hd" class="dice_hd">
+        <h3 class="h_folder"><span onclick="mList.selectFolderTitle($Event(event));">받은메일함</span> <em onclick="mList.selectFolderTitle($Event(event), 'unread');">1313</em></h3>
+        <!-- [D] 버튼 선택시 .active 클래스 추가 -->
+        <button onclick="mCore.toggleMailWrap($Event(event))" class="go_box"><span class="u_hc">메일함 보기</span><em id="box_new" class="new">New</em></button>
+        <button class="go_write" onclick="if(mCore.compareActionEndTime())mWrite.initWriteMain();"><span class="u_hc">메일쓰기</span></button>
+</div>
 
 <br>
 <table>
@@ -51,8 +56,8 @@
 
 <!-- script -->
 <!-- library -->
-<script type="text/javascript" src="./lib/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="./lib/bootstrap.min.js"></script>
+<script type="text/javascript" src="../lib/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="../lib/bootstrap.min.js"></script>
 <!-- application -->
 
  <!-- page -->
